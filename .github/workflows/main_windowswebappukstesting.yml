@@ -54,4 +54,4 @@ jobs:
           app-name: 'windowswebappukstesting'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B7806CB3D0E34640AC600346CAD6ACC9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F16D85C4E28D40DB9D6881F13023CF8D }}
