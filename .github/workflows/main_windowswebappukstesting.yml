@@ -16,10 +16,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18'
-
+        
+    - name: Change to React app
+      run: cd my-app
+      
     - name: Install dependencies
       run: npm install
-
+   
     - name: Build React app
       run: npm run build
 
@@ -29,4 +32,4 @@ jobs:
         app-name: 'windowswebappukstesting'
         slot-name: 'production'  # Remove this line if you are not deploying to a slot
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F16D85C4E28D40DB9D6881F13023CF8D }}
-        package: './build'
+        package: './my-app/build'
