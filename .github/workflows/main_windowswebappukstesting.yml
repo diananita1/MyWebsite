@@ -1,0 +1,35 @@
+name: Deploy React App to Azure Web App
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+        
+    - name: Change to React app
+      run: cd server
+      
+    - name: Install dependencies
+      run: npm install
+   
+    # - name: Build React app
+    #   run: npm run build
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'windowswebappukstesting'
+        slot-name: 'production'  # Remove this line if you are not deploying to a slot
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F16D85C4E28D40DB9D6881F13023CF8D }}
+        package: './server'
